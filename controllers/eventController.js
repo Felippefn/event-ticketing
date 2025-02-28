@@ -2,7 +2,7 @@ const Event = require("../models/Event");
 
 
 exports.createEvent = async (req, res) => {
-    const {title, date, location, price, imageEvent} = req.body;
+    const {title, date, location, price, imageEvent, ticketsAvailable} = req.body;
 
     try{
     let titleNumbers = await Event.find({ title });
@@ -12,7 +12,7 @@ exports.createEvent = async (req, res) => {
         return res.status(400).json({ message: "Event is already active." });
     }
 
-    eventShow = new Event({title, date, location, price, imageEvent});
+    eventShow = new Event({title, date, location, price, imageEvent, ticketsAvailable});
 
     await eventShow.save();
     res.status(201).json(eventShow);
