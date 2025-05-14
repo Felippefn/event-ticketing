@@ -32,10 +32,19 @@ exports.login = async (req, res) => {
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
   
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+      const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1d" });
   
       res.json({ token, user });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   };
+
+ exports.getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await User.find(); // ✅ Correct
+    res.status(200).json({ allUsers });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

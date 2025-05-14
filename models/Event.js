@@ -8,7 +8,7 @@ const EventSchema = new mongoose.Schema({
   imageEvent: { type: Buffer, required: false, default: ""},
   isAvailable: { type: Boolean, default: true},
   ticketsAvailable: { type: Number, required: true },
-  seatsAvailable: {type: [ticketsAvailable]}
+  seatsAvailable: {type: Number, required: true}
 });
 
 module.exports = mongoose.model("Event", EventSchema);
