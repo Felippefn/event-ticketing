@@ -9,7 +9,6 @@ const EventSchema = new mongoose.Schema({
   isAvailable: { type: Boolean, default: true },
   ticketsAvailable: { type: Number, required: true },
   seatsAvailable: {type: Number, required: true}
-  seatsAvailable: { type: [Number] } 
 });
 
 module.exports = mongoose.model("Event", EventSchema);
