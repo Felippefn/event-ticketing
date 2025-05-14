@@ -5,10 +5,11 @@ const EventSchema = new mongoose.Schema({
   date: { type: Date, required: true },
   location: { type: String, required: true },
   price: { type: Number, required: true },
-  imageEvent: { type: Buffer, required: false, default: ""},
-  isAvailable: { type: Boolean, default: true},
+  imageEvent: { type: Buffer, required: false, default: "" },
+  isAvailable: { type: Boolean, default: true },
   ticketsAvailable: { type: Number, required: true },
   seatsAvailable: {type: Number, required: true}
+  seatsAvailable: { type: [Number] } 
 });
 
 module.exports = mongoose.model("Event", EventSchema);
